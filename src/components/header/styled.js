@@ -10,10 +10,11 @@ export const Menu = styled.header`
     align-items: center;
     background-color: #58A558ca;
     border-bottom: 2px solid #1F1E1D;
-`
+`;
+
 export const Options = styled(Link)`
     height: 44px;
-    color: ${({active}) => active ? '#116530' : '#ffffffa1'};
+    color: ${({active}) => !!active ? '#116530' : '#ffffffa1'};
     text-decoration: none;
     font-size: 2rem;
-`
+`;

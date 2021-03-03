@@ -1,19 +1,22 @@
 import React, {useState,useEffect} from 'react';
 import Header from '../../components/header';
+import Paginacao from '../../components/Paginacao';
 import api from '../../services/api';
 import {Table, Celula} from './styled';
 
 const Todos = () => {
     const [todos, setTodos] = useState([]);
+    const [offset, setOffSet] = useState(0);
 
     async function loadTodos() {
-        await api.get("todos").then((res) => {
+        await api.get(`todos?_start=${offset}&_limit=9`).then((res) => {
             setTodos(res.data);
+            console.log(res.data.length);
         });
       } 
       useEffect(() => {
         loadTodos();
-      }, []);
+      }, [offset]);
     return (
         <>
         <Header todos={true}/>
@@ -24,6 +27,12 @@ const Todos = () => {
           </Celula>
         ))}
         </Table>
+        <Paginacao 
+        limite={9} 
+        total={200} 
+        offset={offset} 
+        setOffSet={setOffSet}
+        />
         </>
     )
 };
