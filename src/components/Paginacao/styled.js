@@ -13,7 +13,7 @@ export const Ul = styled.ul`
 export const Button = styled.button`
   background-color: transparent;
   font-size: 20px;
-  color: #000;
+  color: #fff;
   cursor: pointer;
   outline: none;
   border: 1px solid #116530;

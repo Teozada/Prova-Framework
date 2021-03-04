@@ -9,10 +9,10 @@ const Menu = () => {
       <Header menu={true} />
       <Body>
         <Options to="/albuns">
-          Albúns <img src={Seta} alt="seta" />
+          Albums <img src={Seta} alt="seta" />
         </Options>
         <Options to="/postagens">
-          Postagens <img src={Seta} alt="seta" />
+          Posts <img src={Seta} alt="seta" />
         </Options>
         <Options to="/todos">
           To'Dos <img src={Seta} alt="seta" />

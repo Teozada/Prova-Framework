@@ -12,7 +12,7 @@ align-items: center;
 export const Options = styled(Link)`
     text-decoration: none;
     font-size: 4rem;
-    color: #ffffffa1;
+    color: #fff;
     display: flex;
     flex-direction: row;
     width: 50%;
@@ -22,5 +22,9 @@ export const Options = styled(Link)`
     img{
         width: 50px;
         margin-left: 5px;
+        align-items: center;
+        justify-content: center;
+        fill: #fff;
+        
     }
 `;
