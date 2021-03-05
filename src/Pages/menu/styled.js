@@ -1,5 +1,13 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from "react-router-dom";
+
+const tilt = keyframes`
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+`;
 
 export const Body = styled.div`
 height: 80vh;
@@ -27,4 +35,7 @@ export const Options = styled(Link)`
         fill: #fff;
         
     }
+    &:hover {
+    animation: ${tilt} 0.5s forwards;
+  }
 `;
