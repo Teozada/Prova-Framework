@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../../components/header";
-import Paginacao from "../../components/paginacao";
+import Paginacao from "../../components/pagination";
 import Pesquisar from "../../components/pesquisar";
 import Filtro from "../../components/filtrotodo";
 import Check from "../../assets/check.svg";
