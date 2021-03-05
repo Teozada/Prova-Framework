@@ -6,12 +6,13 @@ import Filtro from "../../components/filtrotodo";
 import Check from "../../assets/check.svg";
 import Incomplete from "../../assets/remove.svg";
 import api from "../../services/api";
-import { Table, Celula, Div } from "./styled";
+import { Table, Celula, Div, DivPesquisa } from "./styled";
 
 const Todos = () => {
   const [todos, setTodos] = useState([]);
   const [offset, setOffSet] = useState(0);
   const [search, setSearch] = useState("");
+  const [length, setLength] = useState(0);
 
   useEffect(() => {
     async function loadTodos() {
@@ -20,10 +21,13 @@ const Todos = () => {
           .get(`todos?${search}`)
           .then((res) => {
             setTodos(res.data);
+            setLength(res.data.length);
           })
       } else
         await api.get(`todos?_start=${offset}&_limit=9`).then((res) => {
           setTodos(res.data);
+          setLength(res.data.length);
+          setSearch('')
         });
 
     }
@@ -34,8 +38,11 @@ const Todos = () => {
     <>
       <Header todos={true} />
       <Div>
+      <DivPesquisa>
         <Pesquisar setState={setSearch} />
+        <label>Você filtrou {length} resultados</label>
         <Filtro setState={setSearch} />
+      </DivPesquisa>
       </Div>
       <Table>
         {todos.map((v, i) => (

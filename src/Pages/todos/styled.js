@@ -13,6 +13,16 @@ export const Table = styled.div`
   grid-template-columns: auto auto auto;
 `;
 
+export const DivPesquisa = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+label{
+  margin-left: 30px;
+  margin-right: 150px;
+}
+`
+
 export const Celula = styled.div`
   height: 116px;
   background-color: #58a558ca;

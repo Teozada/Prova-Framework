@@ -3,22 +3,26 @@ import Header from "../../components/header";
 import api from "../../services/api";
 import Paginacao from "../../components/paginacao";
 import Pesquisar from "../../components/pesquisar";
-import { Table, Celula } from "./styled";
+import { Table, Celula, DivPesquisa } from "./styled";
 
 const Albuns = () => {
   const [album, setAlbum] = useState([]);
   const [offset, setOffSet] = useState(0);
   const [search, setSearch] = useState("");
+  const [length, setLength] = useState(0);
 
   useEffect(() => {
     async function loadAlbuns() {
       if (/=(\w+)/g.exec(search) != null) {
         await api.get(`albums?${search}`).then((res) => {
           setAlbum(res.data);
+          setLength(res.data.length);
         });
       } else
         await api.get(`albums?_start=${offset}&_limit=9`).then((res) => {
           setAlbum(res.data);
+          setLength(res.data.length);
+          setSearch('')
         });
     }
     loadAlbuns();
@@ -26,7 +30,10 @@ const Albuns = () => {
   return (
     <>
       <Header albuns={true} />
-      <Pesquisar setState={setSearch} />
+      <DivPesquisa>
+        <Pesquisar setState={setSearch} />
+        <label>Você filtrou {length} resultados</label>
+      </DivPesquisa>
       <Table>
         {album.map((v, i) => (
           <Celula key={i}>
@@ -40,7 +47,7 @@ const Albuns = () => {
           total={100}
           offset={offset}
           setOffSet={setOffSet}
-        />
+          />
       )}
     </>
   );
