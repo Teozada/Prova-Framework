@@ -1,7 +1,7 @@
 import React from "react";
 import { Ul, Button } from "./styled";
 
-const maximo_itens = 5;
+const maximo_itens =5;
 const maximo_esquerda = 2;
 
 const Paginacao = ({ limite, total, offset, setOffSet }) => {
